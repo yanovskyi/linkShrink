@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres:15.4
+    environment:
+      POSTGRES_DB: "linkstrinkdb"
+      POSTGRES_USER: "linkshrinkuser"
+      POSTGRES_PASSWORD: "sprpswlnkshrnk"
+    ports:
+      - "5433:5433"
+    command: -p 5433
