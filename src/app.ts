@@ -7,7 +7,7 @@ import sequelize from './utils/database';
 const app = express();
 
 app.set('view engine', 'ejs');
-app.set('views', 'views');
+app.set('views', path.join( __dirname, "views"));
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -16,7 +16,6 @@ app.use(mainRoutes);
 
 sequelize.sync()
 .then((res) => {
-    console.log('test', res);
     app.listen(3000);
 })
 .catch((err) => {

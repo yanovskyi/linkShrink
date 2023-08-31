@@ -5,10 +5,13 @@
       "moduleResolution": "node",
       "sourceMap": true,
       "outDir": "./dist",
-      "baseUrl": "./",
+      "baseUrl": "./src",
       "skipLibCheck": true,
       "esModuleInterop": true,
       "forceConsistentCasingInFileNames": true
-    }
+    },
+    "include": [
+        "src/"
+      ]
   }
   
