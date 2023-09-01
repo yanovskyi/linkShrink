@@ -1,1 +1,72 @@
-<h1> Hello world  <%= myNumber %> </h1>
+<link rel="stylesheet" href="main.css">
+<div class="header-container">
+    Link Shrink v1.0
+</div>
+<div class="form-container">
+    <form action="/add" method="POST">
+        <input type="text" name="title" placeholder="Optional title"/>
+        <input type="text" name="urlAddress" required placeholder="URL"/>
+        <input type="hidden" name="renderMode" value="enabled" />
+        <button type="submit">Create Short Link</button>
+    </form>
+</div>
+
+<div class="info-container">
+    <% if  (addStatus == RequestResultStatusEnum.NOT_ADDED) { %>
+        <div class="warning-container"> Not added! :-( </div>
+    <% } else if (addStatus == RequestResultStatusEnum.NOT_FOUND_HASH) { %>
+        <div class="warning-container"> Not found link! :-( </div> 
+    <% } else if (addStatus == RequestResultStatusEnum.DELETION_FAILED) { %>
+        <div class="warning-container"> Deletion is failed! :-( </div> 
+    <% } else if (addStatus == RequestResultStatusEnum.EDITING_FAILED) { %>
+        <div class="warning-container"> Editing is failed! :-( </div> 
+    <% } else if (addStatus == RequestResultStatusEnum.EDITING_SUCCESS) { %>
+        <div class="success-container"> Edited! :-) </div> 
+    <% } else if (addStatus == RequestResultStatusEnum.DELETION_SUCCESS) { %>
+        <div class="success-container"> Deleted! :-) </div>   
+    <% } else if (addStatus == RequestResultStatusEnum.SUCCESS) { %>
+        <div class="success-container"> Added! :-) Your link is: <a href="<%= urlHost + '/ls/' + newHash %>"><%= urlHost + '/ls/' + newHash %></a></div>
+    <% } %>
+</div>
+
+<div class="table-container">
+    <table>
+        <tr class="head-row">
+            <td>ID</td>
+            <td>TITLE</td>
+            <td>USER</td>
+            <td>SHORT LINK</td>
+            <td>REAL LINK</td>
+            <td>CREATED</td>
+            <td></td>
+        </tr>
+        <% for(var i=0; i<linkShrinks.length; i++) {%>
+        <tr>
+            <td><%= linkShrinks[i]?.id %></td>
+            <td><%= linkShrinks[i]?.title %></td>
+            <td><%= linkShrinks[i]?.user %></td>
+            <td title="<%= urlHost %>/ls/<%= linkShrinks[i]?.hash %>"><a href="<%= urlHost %>/ls/<%= linkShrinks[i]?.hash %>"><%= urlHost %>/ls/<%= linkShrinks[i]?.hash %></a></td>
+            <td title="<%= linkShrinks[i]?.url %>"><%= linkShrinks[i]?.url %></td>
+            <td><%= (new Date(linkShrinks[i]?.createdAt)).toISOString() %></td>
+            <td>
+                <div class="action-container">
+                    <div>
+                        <form action="/editor" method="POST">
+                            <input type="hidden" name="linkId" value="<%= linkShrinks[i]?.id %>" />
+                            <input type="hidden" name="linkTitle" value="<%= linkShrinks[i]?.title %>" />
+                            <input type="hidden" name="linkUrl" value="<%= linkShrinks[i]?.url %>" />
+                            <button type="submit">Edit</button>
+                        </form>
+                    </div>
+                    <div>
+                        <form action="/remove/<%= linkShrinks[i]?.id %>" method="POST">
+                            <input type="hidden" name="renderMode" value="enabled" />
+                            <button type="submit">Remove</button>
+                        </form>
+                    </div>
+                </div>
+            </td>
+        </tr>
+         <% } %>   
+    </table>
+</div>

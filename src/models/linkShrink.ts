@@ -1,7 +1,13 @@
 import { Model, DataTypes } from 'sequelize';
 import sequelize from '../utils/database';
 
-export class LinkShrink extends Model {}
+export class LinkShrink extends Model {
+    id: number;
+    title: string;
+    user: string;
+    url: string;
+    hash: string;
+}
 
 LinkShrink.init({
     id: {

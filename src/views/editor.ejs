@@ -1,0 +1,14 @@
+<link rel="stylesheet" href="main.css">
+<div class="header-container">
+    Link Shrink v1.0
+</div>
+<div class="form-container">
+    <form action="/edit/<%= linkId %>" method="POST">
+        <input type="text" name="linkTitle" placeholder="Optional title" value="<%= linkTitle %>"/>
+        <input type="text" name="linkUrl" required placeholder="URL" value="<%= linkUrl %>"/>
+        <input type="checkbox" name="generateHash"/>
+        <label for="generateHash">Re-generate hash</label>
+        <input type="hidden" name="renderMode" value="enabled" />
+        <button type="submit">Update Short Link</button>
+    </form>
+</div>
