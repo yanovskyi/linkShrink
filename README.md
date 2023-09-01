@@ -35,3 +35,15 @@ App Info:
     router.post('/edit/:linkId', MainController.updateLink);
 
 P.S. After finishing work with app don't forget stop docker container and node server of course :-)
+
+
+### Possible improvements:
+- adding authorization
+- adding pagination for list of items
+- add better styling for rendered pages
+
+### Part2 - What If: we need to scale our service for 10000 or 100000 request per second
+For scaling our app as service we can:
+    - run multiple services with own instance of database on different servers if needed
+    - create one service that will monitor databases load by requests and will redirect to special route for each instance of our service
+    - buy better plan on azure :-)
