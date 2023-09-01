@@ -16,26 +16,22 @@ App Info:
 
 1. b) For Using app as service use these endpoints from routes/main.ts file:
     
+    - For adding new linkItem
     router.post('/add', MainController.addNewLink);
 
-    // Works for both modes - service and with server side rendering with redirection
-    
+    - Works for both modes - service and with server side rendering with redirection
     router.get('/ls/:linkHash', MainController.checkLinkAndRedirect);
 
-    // For service mode - for allowing getting list of linkShrink items by outer source
-    
+    - For service mode - for allowing getting list of linkShrink items by outer source
     router.get('/getList', MainController.getList);
 
-    // For removing item from the list
-    
+    - For removing item from the list
     router.post('/remove/:linkId', MainController.removeLink);
 
-    // For updating item in the list by id
-    
+    - For updating item in the list by id
     router.put('/edit/:linkId', MainController.updateLink);
     
-    // For rendering mode we use post due to html form
-    
+    - For rendering mode we use post due to html form
     router.post('/edit/:linkId', MainController.updateLink);
 
 P.S. After finishing work with app don't forget stop docker container and node server of course :-)
