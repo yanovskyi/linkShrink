@@ -15,6 +15,7 @@ App Info:
 1. a) For Rendering mode you just need to visit http://localhost:3000 - it will render starting page with form and list of the added items below where you can Add, Remove, Edit, Read new items with shord links
 
 1. b) For Using app as service use these endpoints from routes/main.ts file:
+    
     router.post('/add', MainController.addNewLink);
 
     // Works for both modes - service and with server side rendering with redirection
