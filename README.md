@@ -12,7 +12,7 @@ App Info:
  - install dependencies -> command: npm install
  - run project -> npm run start or use for production files in dist/ folder
 
-1. a) For Rendering mode you just need to visit http://localhost:3000 - it will render starting page with form and list of the added items below where you can Add, Remove, Edit, Read new items with shord links
+1. a) For Rendering mode you just need to visit http://localhost:3000 - it will render starting page with form and list of the added items below where you can Add, Remove, Edit, Read new items with short links
 
 1. b) For Using app as service use these endpoints from routes/main.ts file:
     
