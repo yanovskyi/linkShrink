@@ -372,8 +372,8 @@ export class MainController {
         return shortURLhash;
     }
 
-    // We taking few first symbols from 
-    private static getShortUniqueUUID(uuid: string, currentSize: number = MIN_URL_HASH_SIZE): Promise<string> {
+    // We're taking few first symbols from 
+    static getShortUniqueUUID(uuid: string, currentSize: number = MIN_URL_HASH_SIZE): Promise<string> {
         const newShortHash: string = uuid.slice(0, currentSize);
 
         // Due to short hash we need to check uniqueness of this hash in our data base
